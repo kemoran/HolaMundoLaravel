@@ -9,4 +9,11 @@ Detalle de usuario
 	{{ $dato->nombres }}
 	<br>
 	{{ $dato->apellidos }}
+
+	{{ Form::open(array('url' => 'foo/bar')) }}
+	    {{ Form::label('email', 'E-Mail Address') }}
+	    {{ Form::text('username') }}
+	    {{ Form::submit('Register') }}
+	{{ Form::close() }}
+
 @stop
