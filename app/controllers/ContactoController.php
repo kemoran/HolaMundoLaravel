@@ -4,9 +4,9 @@
 		public function crearcontacto($id_usuario){
 			$usuario = User::find($id_usuario);
 			$contacto = new Contacto;
-			$contacto->nombre = 'Paulino Morán';
+			$contacto->nombre = 'Binda Gonzalez';
 			$contacto->telefono = '77470078';
-			$contacto->correo_electronico = 'paulino.moran@calzadoideal.com';
+			$contacto->correo_electronico = 'binda.gonzalez@catolica.edu.sv';
 			$contacto->direccion = 'Calle 15 de Septiembre #12, Metapán';
 			$contacto->usuario()->associate($usuario);
 			$contacto->save();
@@ -29,7 +29,7 @@
 			$usuario = User::find($id_usuario);
 			$contactos = $usuario->contacto;
 			//return $contactos;
-			return View::make('Contacto.listarcontactos', array('datos' => $contactos));
+			return View::make('Contacto.listarcontactos', array('datos' => $contactos, 'usuario' => $usuario));
 		}
 
 		public function detallecontacto($id_usuario,$id_contacto){
