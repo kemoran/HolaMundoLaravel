@@ -23,5 +23,16 @@
 			return View::make('User.detalleusuario', array('dato' => $usuario));
 		}
 
+		public function listarusuario(){
+			/*
+			$usuario = User::find($id_usuario);
+			$contactos = $usuario->contacto;
+			//return $contactos;
+			return View::make('Contacto.listarcontactos', array('datos' => $contactos, 'usuario' => $usuario));
+			*/
+			$usuario = User::all();
+			return View::make('User.listarusuarios', array('datos' => $usuario));
+		}
+
 	}
 ?>

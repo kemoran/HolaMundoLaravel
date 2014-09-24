@@ -61,3 +61,6 @@ Route::get('usuario/{id_usuario}/actualizarcontacto/{id_contacto}','ContactoCont
 Route::get('usuario/{id_usuario}/eliminarcontacto/{id_contacto}','ContactoController@eliminarcontacto');
 Route::get('usuario/{id_usuario}/listarcontactos','ContactoController@listarcontactos');
 Route::get('usuario/{id_usuario}/detallecontacto/{id_contacto}','ContactoController@detallecontacto');
+
+Route::get('Usuario/Consultar/', array('as' => 'UsuarioConsultar', 'uses' => 'UsuarioController@listarusuario'));
+Route::get('Usuario/Agregar/', array('as' => 'UsuarioAgregar', 'uses' => 'UsuarioController@agregarusuario'));
