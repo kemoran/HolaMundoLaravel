@@ -63,4 +63,10 @@ Route::get('usuario/{id_usuario}/listarcontactos','ContactoController@listarcont
 Route::get('usuario/{id_usuario}/detallecontacto/{id_contacto}','ContactoController@detallecontacto');
 
 Route::get('Usuario/Consultar/', array('as' => 'UsuarioConsultar', 'uses' => 'UsuarioController@listarusuario'));
-Route::get('Usuario/Agregar/', array('as' => 'UsuarioAgregar', 'uses' => 'UsuarioController@agregarusuario'));
+
+Route::get('Usuario/Agregar/', array('as' => 'UsuarioAgregar', 'uses' => 'UsuarioController@get_AgregarUsuario'));
+Route::post('Usuario/Agregar/POST/', array('as' => 'UsuarioAgregarPOST', 'uses' => 'UsuarioController@post_AgregarUsuario'));
+
+Route::match(array('GET', 'POST'), 'Usuario/Editar/{id_usuario}/', array('as' => 'UsuarioEditar', 'uses' => 'UsuarioController@UsuarioEditar'));
+
+Route::post('Usuario/Eliminar/{id_usuario}/', array('as' => 'UsuarioEliminar', 'uses' => 'UsuarioController@UsuarioEliminar'));

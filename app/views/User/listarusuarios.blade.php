@@ -29,7 +29,8 @@ Listado de usuarios
 			</div>
 			<!-- Cuerpo del box -->
 			<div class="box-body table-responsive no-padding">
-				<table class="table table-hover table-bordered">
+				<div class="dataTables_wrapper form-inline" role="grid">
+				<table class="table table-hover table-bordered dataTable" id="tblUsuarios">
 					<tbody>
 						<!-- Encabezado de tabla -->
 						<tr>
@@ -46,21 +47,30 @@ Listado de usuarios
 							<td> {{ $dato->dui }} </td>
 							<!-- Botones de mantenimiento -->
 							<td>
-								<a href="/usuario/{{ $dato->id }}" class="btn btn-warning btn-sm"> Editar </a>
-								<a href="/usuario/{{ $dato->id }}" class="btn btn-danger btn-sm"> Eliminar </a>
+								{{ HTML::linkRoute('UsuarioEditar', 'Editar', array($dato->id), array('class' => 'btn btn-warning btn-sm')) }}
+								{{ Form::open(array('url' => 'Usuario/Eliminar/'.$dato->id, 'method' => 'post', 'role' =>  'form', 'style' => 'display: inline;' )) }}
+									{{ Form::hidden('hdnID', $dato->id) }}
+									{{ Form::submit('Eliminar', array('class' => 'btn btn-danger btn-sm')) }}
+								{{ Form::close() }}
 							</td>
 						</tr>
 						@endforeach
 					</tbody>
 				</table>
+				</div>
 			</div>
 			<div class="box-footer clearfix">
-				<!--
-				<a href="/public/Usuario/Agregar/" class="btn btn-primary btn-sm"> Agregar </a>
-				-->
-				{{ HTML::linkRoute('UsuarioConsultar', 'Agregar', array(), array('class' => 'btn btn-primary btn-sm')) }}
+				{{ HTML::linkRoute('UsuarioAgregar', 'Agregar', array(), array('class' => 'btn btn-primary btn-sm')) }}
 			</div>
 		</div>
 	</div>
 </div>
+@stop
+
+@section('JS')
+<script type="text/javascript">
+	$(function(){
+		$("#tblUsuarios").dataTable();
+	});
+</script>
 @stop
